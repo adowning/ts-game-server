@@ -3,7 +3,7 @@ import path from 'path'
 
 export interface PHPExecutionResult {
   success: boolean
-  output: string
+  output: string // This will be the JSON string from the refactored PHP server
   error?: string
   exitCode?: number
 }
@@ -18,105 +18,69 @@ export class PHPExecutor {
   }
 
   /**
-   * Execute a PHP file with POST data
+   * Execute a PHP file with a data bundle via stdin
    */
   async executePhpFile(
     phpFilePath: string,
-    postData: any = {},
-    sessionId?: string,
-    cookie?: string
+    dataBundle: any = {} // This bundle is directly passed as JSON
   ): Promise<PHPExecutionResult> {
     try {
       const absolutePhpPath = path.resolve(this.workingDirectory, phpFilePath)
-      console.log(absolutePhpPath)
-      // Prepare environment variables to simulate HTTP request
+
+      // Environment variables might still be useful for PHP's context,
+      // though Server_refactored.php primarily uses the input bundle.
       const env = {
         ...process.env,
-        REQUEST_METHOD: 'POST',
-        CONTENT_TYPE: 'application/json',
-        HTTP_COOKIE: cookie || '',
-        QUERY_STRING: sessionId ? `sessionId=${sessionId}` : '',
-        REQUEST_URI: phpFilePath,
-        SERVER_NAME: 'localhost',
-        SERVER_PORT: '3000',
-        SCRIPT_NAME: phpFilePath,
-        SCRIPT_FILENAME: absolutePhpPath,
+        REQUEST_METHOD: 'POST', // Still good practice to set
+        CONTENT_TYPE: 'application/json', // Standard for JSON input
+        // Other CGI-like variables can be set if needed by any underlying PHP functions
+        // SCRIPT_NAME, SCRIPT_FILENAME etc. are usually set by web server context
+        // For CLI execution, their relevance is minimal unless script specifically checks them.
       }
 
-      // Convert POST data to JSON for php://input
-      const jsonData = JSON.stringify(postData)
-      console.log(jsonData)
-      console.log(this.phpPath)
-      console.log(absolutePhpPath)
+      const jsonData = JSON.stringify(dataBundle)
 
-      // Execute PHP with the JSON data as stdin
-      const result = await $`echo ${jsonData} | ${this.phpPath} ${absolutePhpPath}`.env(env).quiet()
-      console.log(result)
-      console.log(result.stdout.toString())
-      console.log(result.stderr.toString())
-      // console.log(result.json())
-      console.log(result.text())
-      Object.entries(result).forEach(([key, value]) => {
-        console.log(`${key}: ${value}`)
-      })
+      // Bun's $`` handles piping and command execution elegantly.
+      // Ensure jsonData is properly escaped if it were part of the command string itself,
+      // but for stdin, it's passed as is.
+      const command = [`echo '${jsonData}'`, '|', this.phpPath, absolutePhpPath];
+      const result = await $(command.join(' ')).env(env).quiet()
+
       return {
         success: result.exitCode === 0,
         output: result.stdout.toString(),
-        error: result.stderr.toString() || undefined,
+        error: result.stderr.toString() || undefined, // Ensure empty stderr is undefined
         exitCode: result.exitCode,
       }
-    } catch (error) {
-      console.log(error)
+    } catch (error: any) {
+      // Handle cases where the command execution itself fails (e.g., PHP not found)
+      // 'error' from Bun's $ execution often includes stdout, stderr, exitCode if process ran but failed.
+      // If it's a JS error before process execution, it'll be a standard Error.
       return {
         success: false,
-        output: '',
-        error: error instanceof Error ? error.message : 'Unknown error',
-        exitCode: -1,
+        output: error?.stdout?.toString() || '',
+        error: error?.stderr?.toString() || (error instanceof Error ? error.message : 'Unknown error during PHP execution'),
+        exitCode: error?.exitCode === undefined ? -1 : error.exitCode,
       }
     }
   }
 
   /**
-   * Execute CloverStonesNG PHP server
-   */
-  async executeCloverStonesNG(
-    gameData: any,
-    sessionId: string,
-    gameName: string,
-    cookie?: string
-  ): Promise<PHPExecutionResult> {
-    const phpFile = 'src/phpfiles/Games/CloverStonesNG/Server.php'
-    console.log(phpFile)
-    // Prepare the request data in the format expected by the PHP server
-    const requestData = {
-      gameData,
-      sessionId,
-      gameName,
-      cookie: cookie || '',
-    }
-
-    return this.executePhpFile(phpFile, requestData, sessionId, cookie)
-  }
-
-  /**
-   * Execute any game's PHP server
+   * Execute any game's refactored PHP server
+   * @param gameName Name of the game (e.g., AfricanKingNG)
+   * @param gameInputBundle The complete data bundle expected by the PHP script
    */
   async executeGameServer(
     gameName: string,
-    gameData: any,
-    sessionId: string,
-    cookie?: string
+    gameInputBundle: any // This is the GameInputData bundle
   ): Promise<PHPExecutionResult> {
-    const phpFile = `src/phpfiles/Games/${gameName}/Server.php`
+    // Path to the refactored server script
+    const phpFile = `phpfiles/Games/${gameName}/Server_refactored.php`;
+    // Note: Original used src/phpfiles/... path. Assuming phpfiles is at root now based on task context.
+    // If src/ is indeed part of the path, it should be `src/phpfiles/Games/...`
 
-    const requestData = {
-      gameData,
-      sessionId,
-      gameName,
-      cookie: cookie || '',
-    }
-
-    return this.executePhpFile(phpFile, requestData, sessionId, cookie)
+    // The gameInputBundle is passed directly
+    return this.executePhpFile(phpFile, gameInputBundle);
   }
 
   /**
