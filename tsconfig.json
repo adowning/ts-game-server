@@ -1,0 +1,58 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    // "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@/types/*": [
+        "./types/*"
+      ],
+      "@/core/*": [
+        "./core/*"
+      ],
+      "@/games/*": [
+        "./games/*"
+      ],
+      "@/database/*": [
+        "./database/*"
+      ],
+      "@/websocket/*": [
+        "./websocket/*"
+      ],
+      "@/utils/*": [
+        "./utils/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "prisma/**/*",
+    "parser.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

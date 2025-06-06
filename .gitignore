@@ -1,0 +1,15 @@
+node_modules/
+public/games/AfricanKingNG/
+public/games/BananasNG/
+public/games/AztecGoldMegaWaysISB/
+public/games/AmericalnGigoloCT/
+src/prisma/
+research
+research/
+research/*
+.vscode/
+
+./public/games/AfricanKingNG/
+./public/games/BananasNG/
+./public/games/AztecGoldMegaWaysISB/
+./public/games/AmericalnGigoloCT/

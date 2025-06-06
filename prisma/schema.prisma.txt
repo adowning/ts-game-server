@@ -1,0 +1,126 @@
+// Prisma schema for TypeScript Game Server
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User/Player models
+model User {
+  id             Int      @id @default(autoincrement())
+  username       String   @unique
+  email          String?  @unique
+  balance        Decimal  @default(0) @db.Decimal(15, 2)
+  count_balance  Int      @default(0)
+  shop_id        Int
+  is_blocked     Boolean  @default(false)
+  status         String   @default("ACTIVE")
+  address        Int      @default(0)
+  session        String?  @db.Text // Serialized session data
+  remember_token String?
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+
+  // Relations
+  shop     Shop      @relation(fields: [shop_id], references: [id])
+  gameLogs GameLog[]
+  sessions Session[]
+
+  @@map("users")
+}
+
+model Shop {
+  id         Int      @id @default(autoincrement())
+  name       String
+  currency   String   @default("USD")
+  percent    Int      @default(90)
+  max_win    Decimal  @db.Decimal(15, 2)
+  is_blocked Boolean  @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relations
+  users     User[]
+  games     Game[]
+  gameBanks GameBank[]
+
+  @@map("shops")
+}
+
+// Game models
+model Game {
+  id            Int      @id @default(autoincrement())
+  name          String // Game identifier (e.g., "AfricanKingNG")
+  title         String? // Display name
+  shop_id       Int
+  view          Boolean  @default(true)
+  bet           String // Comma-separated bet values
+  denomination  Decimal  @db.Decimal(8, 4)
+  slotViewState String   @default("Normal")
+  advanced      String?  @db.Text // Serialized advanced settings
+  rezerv        Decimal  @default(0) @db.Decimal(15, 2)
+  stat_in       Decimal  @default(0) @db.Decimal(15, 2)
+  stat_out      Decimal  @default(0) @db.Decimal(15, 2)
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
+  // Relations
+  shop     Shop      @relation(fields: [shop_id], references: [id])
+  gameLogs GameLog[]
+
+  @@unique([name, shop_id])
+  @@map("games")
+}
+
+model GameBank {
+  id      Int     @id @default(autoincrement())
+  shop_id Int
+  slots   Decimal @default(0) @db.Decimal(15, 2)
+  fish    Decimal @default(0) @db.Decimal(15, 2)
+  bonus   Decimal @default(0) @db.Decimal(15, 2)
+  little  Decimal @default(0) @db.Decimal(15, 2)
+
+  // Relations
+  shop Shop @relation(fields: [shop_id], references: [id])
+
+  @@map("game_banks")
+}
+
+model GameLog {
+  id         Int      @id @default(autoincrement())
+  user_id    Int
+  game_id    Int
+  str        String   @db.Text // JSON response data
+  created_at DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [user_id], references: [id])
+  game Game @relation(fields: [game_id], references: [id])
+
+  @@map("game_logs")
+}
+
+model Session {
+  id            String  @id @default(cuid())
+  user_id       Int
+  ip_address    String?
+  user_agent    String?
+  payload       String  @db.Text
+  last_activity Int
+
+  // Relations
+  user User @relation(fields: [user_id], references: [id])
+
+  @@map("sessions")
+}
+
+model JPG {
+  id      Int @id @default(autoincrement())
+  shop_id Int
+  percent Int @default(0)
+
+  @@map("jpgs")
+}

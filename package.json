@@ -1,0 +1,35 @@
+{
+  "name": "typescript-game-server",
+  "version": "1.0.0",
+  "description": "TypeScript game server with Hono, Bun, and WebSockets",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts",
+    "build": "bun build src/index.ts --outdir ./dist",
+    "db:generate": "bunx prisma generate",
+    "db:push": "bunx prisma db push",
+    "db:migrate": "bunx prisma migrate dev",
+    "db:seed": "bun run prisma/seed.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "@prisma/adapter-pg": "^6.9.0",
+    "@prisma/client": "^6.9.0",
+    "cors": "^2.8.5",
+    "destr": "^2.0.5",
+    "express": "^5.1.0",
+    "hono": "^4.7.11",
+    "ioredis": "^5.6.1",
+    "jsonrepair": "^3.12.0",
+    "ws": "^8.18.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "@types/ws": "^8.18.1",
+    "bun-types": "^1.2.15",
+    "prisma": "^6.9.0",
+    "typescript": "^5.8.3"
+  },
+  "type": "module"
+}

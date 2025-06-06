@@ -1,0 +1,8 @@
+{
+  "CloverStonesNG": {
+    "error": "Exception during 'CloverStonesNG' config export: Class \"VanguardLTE\\Games\\User\" not found",
+    "file": "/home/ash/Documents/phpconversion/typescript-game-server/src/phpfiles/Games/CloverStonesNG/SlotSettings.php",
+    "line": 64,
+    "trace": "#0 /home/ash/Documents/phpconversion/typescript-game-server/helper.php(107): VanguardLTE\\Games\\CloverStonesNG\\SlotSettings->__construct('CloverStonesNG', 'config_exporter...', Array, Array, Array)\n#1 {main}"
+  }
+}

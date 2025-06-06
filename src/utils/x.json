@@ -1,0 +1,17 @@
+{
+    "gameData": {
+        "msgId": "32c44111-f0b7-4e4f-b774-2aa86cfd8e2a",
+        "result": true,
+        "data": {
+            "versionMajor": "4",
+            "versionMinor": "20",
+            "gameId": "249"
+        },
+        "action": "APIVersionRequest",
+        "cmd": "APIVersionRequest"
+    },
+    "cookie": "_ga=GA1.1.1243988464.1748843159; userId=78cd1b20-418c-11f0-a03c-abf997fc60ec13461fc6-f41f-4fbf-8d23-f7a7ecf52729; g_state={:1749160654147,"i_l":0}; cpu_bucket=xlg; preferred_color_mode=dark; _octo=GH1.1.828465523.1749130054; tz=America%2FChicago; XSRF-TOKEN=eyJpdiI6IkF4b3luM2FlZm93WVJtaDBFd0U1cmc9PSIsInZhbHVlIjoidFhWYXBpdnkwQVlKeUZTcmQwUFdpbXRKaFNTVE95YzhBbXBVamU2VnlDRUJBK05kaGYxYUtPRkRubXMvQm04RkNtK3QvdlQxK3RwTWFSR1JSOXh5NWM4SzRETEpwUmtxWFJvaTFibVpYYWRwQ0NkRE5HN3NUM2NqR2htR0poRjAiLCJtYWMiOiJiYjk4OGIyYzI0MjA2NjhiODBlMDg1NTFiMjlmOTFkNjZmODJhOTk1MzkzMjU3ZjU3NWQyNzg1ZjU4YjJlM2JkIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6Ilp2cTUxK1FlQnluUTJRMVE2WkdSSXc9PSIsInZhbHVlIjoiTk5VQ3h4eWFKSDF4ZmFwcHUwSDFvZEdKU2gxL1pIa1NGcmF2bGxnSm9qVzA5bjBKUVdjNTkzaCs0MzVKeVlaUVE4aGY0N3oxT010WkFqQzlhd1o0RkhxWWFqZjEwQmtoUVp2S3Z3VkliU00vMHh2eWNzdnpnWHhnemwwUitJNWQiLCJtYWMiOiIyNDNlNzNiNGRmNjY1MjExYjMzOGNhMzlkZWFjZGI2YzI4Yjc5ZGU0YWYwN2E4NTEzZTE3MDZhZmNiMTdjOTExIiwidGFnIjoiIn0%3D",
+    "sessionId": "181",
+    "userId": "null",
+    "gameName": "CloverStonesNG"
+}

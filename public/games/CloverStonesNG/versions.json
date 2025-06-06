@@ -1,0 +1,178 @@
+{
+    "3": {
+        "engine": "2.3.185",
+        "core": "1.2.207",
+        "classic-game-base": "1.2.122"
+    },
+    "4": {
+        "engine": "2.3.185",
+        "core": "1.2.207",
+        "classic-game-base": "1.2.122"
+    },
+    "189": {
+        "engine": "2.4.327",
+        "core": "1.3.280",
+        "classic-game-base": "1.3.154",
+        "dj-game-base": "1.5.435"
+    },
+    "190": {
+        "engine": "2.3.130",
+        "core": "1.2.176",
+        "classic-game-base": "1.2.91",
+        "dj-game-base": "1.4.257"
+    },
+    "216": {
+        "engine": "2.4.217",
+        "core": "1.3.235",
+        "classic-game-base": "1.3.137",
+        "dj-game-base": "1.5.345"
+    },
+    "248": {
+        "engine": "2.2.88",
+        "core": "1.2.157",
+        "classic-game-base": "1.2.74",
+        "dj-game-base": "1.4.209"
+    },
+    "249": {
+        "engine": "2.4.217",
+        "core": "1.3.225",
+        "classic-game-base": "1.3.136",
+        "dj-game-base": "1.5.343"
+    },
+    "261": {
+        "engine": "2.6.371",
+        "core": "1.4.318",
+        "classic-game-base": "1.4.191",
+        "dj-game-base": "1.6.638"
+    },
+    "273": {
+        "engine": "2.3.209",
+        "core": "1.2.216",
+        "classic-game-base": "1.2.129",
+        "classic-game-base-instance-mode": "1.0.4",
+        "classic-game-base-psd": "1.0.5",
+        "river-game-base": "1.1.26"
+    },
+    "278": {
+        "engine": "2.4.312",
+        "core": "1.3.276",
+        "classic-game-base": "1.3.153",
+        "dj-game-base": "1.5.395"
+    },
+    "289": {
+        "engine": "2.4.217",
+        "core": "1.3.225",
+        "classic-game-base": "1.3.136",
+        "dj-game-base": "1.5.343"
+    },
+    "290": {
+        "engine": "2.4.217",
+        "core": "1.3.225",
+        "classic-game-base": "1.3.134",
+        "dj-game-base": "1.5.340"
+    },
+    "291": {
+        "engine": "2.6.387",
+        "core": "1.4.342",
+        "classic-game-base": "1.4.225",
+        "dj-game-base": "1.13.725"
+    },
+    "297": {
+        "engine": "2.6.387",
+        "core": "1.4.342",
+        "classic-game-base": "1.4.224",
+        "dj-game-base": "1.13.721"
+    },
+    "299": {
+        "engine": "2.4.321",
+        "core": "1.3.280",
+        "classic-game-base": "1.3.154",
+        "dj-game-base": "1.9.430"
+    },
+    "318": {
+        "engine": "2.6.374",
+        "core": "1.4.318",
+        "classic-game-base": "1.4.202",
+        "dj-game-base": "1.6.658"
+    },
+    "319": {
+        "engine": "2.6.374",
+        "core": "1.4.318",
+        "classic-game-base": "1.4.202",
+        "dj-game-base": "1.6.659"
+    },
+    "351": {
+        "engine": "2.6.328",
+        "core": "1.4.283",
+        "classic-game-base": "1.4.159",
+        "dj-game-base": "1.9.531"
+    },
+    "353": { 
+        "engine": "2.6.385",
+        "core": "1.4.341",
+        "classic-game-base": "1.4.208",
+        "dj-game-base": "1.13.695"
+    },
+    "368": {
+        "engine": "2.6.385",
+        "core": "1.4.341",
+        "classic-game-base": "1.4.219",
+        "dj-game-base": "1.13.723"
+    },
+    "374": {
+        "engine": "2.6.367",
+        "core": "1.4.313",
+        "classic-game-base": "1.3.182",
+        "dj-game-base": "1.5.611",
+        "phantom-game-base": "1.0.119"
+    },
+    "375": {
+        "engine": "2.6.367",
+        "core": "1.4.313",
+        "classic-game-base": "1.3.182",
+        "dj-game-base": "1.5.611",
+        "phantom-game-base": "1.0.117"
+    },
+    "376": {
+        "engine": "2.6.367",
+        "core": "1.4.313",
+        "classic-game-base": "1.3.182",
+        "dj-game-base": "1.5.611",
+        "phantom-game-base": "1.0.117"
+    },
+    "377": {
+        "engine": "2.6.367",
+        "core": "1.4.313",
+        "classic-game-base": "1.3.182",
+        "dj-game-base": "1.5.611",
+        "phantom-game-base": "1.0.119"
+    },
+    "378": {
+        "engine": "2.6.367",
+        "core": "1.4.313",
+        "classic-game-base": "1.3.182",
+        "dj-game-base": "1.5.611",
+        "phantom-game-base": "1.0.119"
+    },
+    "379": {
+        "engine": "2.6.367",
+        "core": "1.4.313",
+        "classic-game-base": "1.3.182",
+        "dj-game-base": "1.5.611",
+        "phantom-game-base": "1.0.117"
+    },
+    "380": {
+        "engine": "2.6.367",
+        "core": "1.4.313",
+        "classic-game-base": "1.3.182",
+        "dj-game-base": "1.5.611",
+        "phantom-game-base": "1.0.119"
+    },
+    "381": {
+        "engine": "2.6.367",
+        "core": "1.4.313",
+        "classic-game-base": "1.3.182",
+        "dj-game-base": "1.5.611",
+        "phantom-game-base": "1.0.117"
+    }
+}
